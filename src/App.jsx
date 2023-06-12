@@ -1,6 +1,11 @@
 // IMPORT ANY NEEDED COMPONENTS HERE
 import { Dataset } from "./data/dataset"
 import "./App.css"
+import Chip from "./components/Chip/Chip"
+import { useState } from 'react'
+import Header from "./components/Header/Header"
+
+
 
 // don't move this!
 export const appInfo = {
@@ -21,13 +26,25 @@ export const appInfo = {
 export function App() {
   const { data, categories, restaurants } = Dataset.createDataSet()
 
+  const [isActive, setIsActive] = useState(false);
+
+  function change() {
+    
+  }
+
+  function change() {
+    setIsActive(isActive => !isActive);
+    console.log(isActive);
+  }
+
+
   return (
     <main className="App">
       {/* CATEGORIES COLUMN */}
       <div className="CategoriesColumn col">
         <div className="categories options">
           <h2 className="title">Categories</h2>
-          {/* YOUR CODE HERE */}
+          <Header props = {appInfo}/>
         </div>
       </div>
 
@@ -38,7 +55,9 @@ export function App() {
         {/* RESTAURANTS ROW */}
         <div className="RestaurantsRow">
           <h2 className="title">Restaurants</h2>
-          <div className="restaurants options">{/* YOUR CODE HERE */}</div>
+          <div className="restaurants options">
+            <Chip label="LMAOOOOOO" isActive={isActive} handleClick={change}/>
+          </div>
         </div>
 
         {/* INSTRUCTIONS GO HERE */}
